@@ -102,7 +102,15 @@ namespace Xamarin.Forms.Platform.Android
 			view.Elevation = value;
 			return true;
 		}
-		
+
+		public static float GetElevation(this AView view)
+		{
+			if (view.IsDisposed() || !Forms.IsLollipopOrNewer)
+				return 0f;
+
+			return view.Elevation;
+		}
+
 		internal static void MaybeRequestLayout(this AView view)
 		{
 			var isInLayout = false;
